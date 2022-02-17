@@ -1,27 +1,28 @@
-const express = require('express');
-const { ApolloServer } = require('apollo-server-express');
-const { authMiddleware } = require('./utils/auth');
+const express = require("express");
+// import ApolloServer
+const { ApolloServer } = require("apollo-server-express");
+const { authMiddleware } = require("./utils/auth");
 
-const path = require('path');
-const db = require('./config/connection');
+const path = require("path");
+const db = require("./config/connection");
 
-// const routes = require('./routes');
+// const routes = require("./routes");
 
-//import our typeDefs and resolvers
-const { typeDefs, resolvers } = require('./schemas');
+// import our typeDefs and resolvers
+const { typeDefs, resolvers } = require("./schemas");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-//create new Apollo server and pass in our schema data
+// create a new Apollo server and pass in our schema data
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: authMiddleware
-})
+  context: authMiddleware,
+});
 
-//integrate our Apollo server with Express application as middleware
-server.applyMiddleware({app});
+// integrate our Apollo server with the Express application as middleware
+server.applyMiddleware({ app });
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,7 +45,6 @@ db.once("open", () => {
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });
 });
-
 db.on("error", (err) => {
   console.error("MongoDB connection error: ", err);
 });

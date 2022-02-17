@@ -18,24 +18,6 @@ const resolvers = {
 
     },
 
-        // users: async() => {
-        //     return User.find()
-        //     .select('-__v -password')
-        //     .populate('books');
-        // },
-        // user: async (parent, { username }) => {
-        //     return User.findOne({username})
-        //     .select('-__v -password')
-        //     .populate('books');
-        // },
-        // books: async (parent, {username}) => {
-        //     const params = username ? { username } : {};
-        //     return Book.find(params).sort({ createdAt: -1 });
-        // },
-        // book: async (parent, { _id }) => {
-        //     return Book.findOne({ _id });
-        // },
-
     Mutation: {
 
         addUser: async (parent, args) => {
@@ -77,7 +59,7 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in.');
         },
 
-        deleteBook: async (parent, args, context) => {
+        removeBook: async (parent, args, context) => {
             if (context.user) {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id },

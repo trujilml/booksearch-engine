@@ -4,12 +4,12 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@apollo/client": "^3.5.9",
     "@apollo/react-hooks": "^4.0.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "apollo-boost": "^0.4.9",
-    "apollo-client": "^2.6.10",
     "bootstrap": "^4.4.1",
     "concurrently": "^7.0.0",
     "graphql": "^15.8.0",

@@ -3,7 +3,7 @@ import { Jumbotron, Container, CardColumns, Card, Button } from 'react-bootstrap
 import { useMutation, useQuery } from '@apollo/react-hooks';
 
 import Auth from '../utils/auth';
-import { removeBookId } from '../utils/localStorage';
+import { removeBookId, saveBookIds } from '../utils/localStorage';
 import { GET_ME } from '../utils/queries';
 import { REMOVE_BOOK } from '../utils/mutations';
 
@@ -38,6 +38,11 @@ const SavedBooks = () => {
   if (loading) {
     return <h2>LOADING...</h2>;
   }
+
+    // sync localStorage with what was returned from the userData query
+    const savedBookIds = userData.savedBooks.map((book) => book.bookId);
+    saveBookIds(savedBookIds);
+  
 
   return (
     <>

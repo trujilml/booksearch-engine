@@ -22,7 +22,7 @@ The Book Search Engine allows logged-in readers to search for new books to read 
 ## Usage
 
 - The URL of the functional, deployed application. 
-
+https://glacial-forest-16564.herokuapp.com/
 
 - The URL of the GitHub repository, with a unique name and a README describing the project.
 https://github.com/trujilml/booksearch-engine 
@@ -48,6 +48,7 @@ https://github.com/trujilml/booksearch-engine
 
 To fulfill the Challenge, you’ll need to do the following:
 
+MongoDB Atlas database - heroku 
 Deploy the application to Heroku.
 
 
